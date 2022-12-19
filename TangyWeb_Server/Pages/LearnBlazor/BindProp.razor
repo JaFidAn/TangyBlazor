@@ -1,7 +1,49 @@
 ﻿@page "/learnBlazor/bindProp"
+@using Tangy_Models.LearnBlazorModels;
 
-<h3>BindProp</h3>
+<h2 class="text-success">Individual Product</h2>
+<div class="row">
+	<div class="col-6 border p-3">
+		<h3 class="text-primary">Product Playground</h3> <hr />
+		<div>Active: <input type="checkbox" @bind-value="@Product.IsActive" checked="@(Product.IsActive?"checked":null)" /> </div>
+		<div>Price:  <input type="number" @bind-value="@Product.Price" @bind-value:event="oninput" /></div>
+		<div>
+			Produdct Properties:
+			<select @bind="selectedProperty">
+				@foreach (var prop in Product.ProductProperties)
+				{
+						<option value="@prop.Key">@prop.Key</option>
+				}
+			</select>
+		</div>
+	</div>
+	<div class="col-6 border p-3">
+		<h3 class="text-primary">Product Summary</h3> <hr />
+		Name: @Product.Name <br />
+		Active: @Product.IsActive <br />
+		Price: @Product.Price <br />
+		This Product is: @(Product.IsActive ? "Active" : "InActve") <br />
+		Property Selected is: @selectedProperty<br />
+		@if (!String.IsNullOrWhiteSpace(selectedProperty))
+		{
+			<p>Property Value : @Product.ProductProperties.FirstOrDefault(u=>u.Key==selectedProperty).Value</p>
+		}
+	</div>
+</div>
 
 @code {
-
+	private string selectedProperty = "";
+	DemoProduct Product = new DemoProduct()
+		{
+			Id = 1,
+			Name = "Rose Candle",
+			Price = 10.99,
+			IsActive = true,
+			ProductProperties = new List<DemoProductProp>()
+			{
+				new DemoProductProp {Id = 1, Key = "Color", Value = "Black"},
+				new DemoProductProp {Id = 2, Key = "Flavor", Value = "Rose Jasmine"},
+				new DemoProductProp {Id = 3, Key = "Size", Value = "20oz"}
+			}
+		};
 }

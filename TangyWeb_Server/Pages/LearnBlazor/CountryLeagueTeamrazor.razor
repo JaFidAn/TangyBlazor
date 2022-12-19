@@ -1,0 +1,46 @@
+﻿@page "/learnBlazor/countryLeagueTeam"
+@using Tangy_Models.MatchModels;
+
+<h3>CountryLeagueTeamrazor</h3>
+
+Match : @Match.Name <br />
+Selected Country : @selectedCountry <br />
+
+<select @bind="@selectedCountry">
+	@foreach(var country in Match.Countries)
+	{
+		<option value="@country.Name">@country.Name</option>
+	}
+</select>
+<br />
+<select @bind="@selectedLeague">
+	
+	@foreach (var league in Match.Leagues)
+	{
+		<option value="@league.Name">@league.Name</option>
+	}
+</select>
+<br />
+
+@code {
+	private string selectedCountry = "";
+	private string selectedLeague = "";
+	Match Match = new Match()
+		{
+			Id = 1,
+			Name = "Barselona - Real Madrid",
+			Countries = new List<Country>()
+			{
+				new Country { Id = 1, Name = "Azerbaijan" },
+				new Country { Id = 2, Name = "Spain" }
+			},
+			Leagues = new List<League>()
+			{
+				new League {Id = 1, Name = "Premier League", CountryId=1},
+				new League {Id = 2, Name = "1.League", CountryId = 1},
+				new League {Id = 3, Name = "La Liga", CountryId = 2},
+				new League {Id = 4, Name = "La Liga 2", CountryId = 2}
+			}
+		};
+
+}
