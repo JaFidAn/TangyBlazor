@@ -1,5 +1,5 @@
 ﻿@page "/learnBlazor/bindProp"
-@using Tangy_Models.LearnBlazorModels;
+
 
 <h2 class="text-success">Individual Product</h2>
 <div class="row">
@@ -12,7 +12,7 @@
 			<select @bind="selectedProperty">
 				@foreach (var prop in Product.ProductProperties)
 				{
-						<option value="@prop.Key">@prop.Key</option>
+					<option value="@prop.Key">@prop.Key</option>
 				}
 			</select>
 		</div>
@@ -29,6 +29,33 @@
 			<p>Property Value : @Product.ProductProperties.FirstOrDefault(u=>u.Key==selectedProperty).Value</p>
 		}
 	</div>
+	<div class="col-12 p-4">
+		<h2 class="text-success">Product Table</h2>
+		<table class="table table-striped">
+			<tbody>
+				@foreach(var product in Products)
+				{
+					<tr>
+						<td>
+							<input type="text" @bind-value="product.Name" @bind-value:event="oninput" />
+						</td>
+						<td>
+							<input type="text" @bind-value="product.Price" @bind-value:event="oninput" />
+						</td>
+							<td>
+							<input type="checkbox" @bind-value="product.IsActive" checked="@(product.IsActive?"checked":null)" />
+							</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+		<br />
+		<h2>Product Summary</h2>
+		@foreach(var product in Products)
+		{
+			<p>@product.Name [@product.Price] is @(product.IsActive?"Active": "InActive")</p>
+		}
+	</div>
 </div>
 
 @code {
@@ -37,7 +64,7 @@
 		{
 			Id = 1,
 			Name = "Rose Candle",
-			Price = 10.99,
+			Price = 100.55,
 			IsActive = true,
 			ProductProperties = new List<DemoProductProp>()
 			{
@@ -46,4 +73,37 @@
 				new DemoProductProp {Id = 3, Key = "Size", Value = "20oz"}
 			}
 		};
+
+	List<DemoProduct> Products = new List<DemoProduct>();
+
+	protected override void OnInitialized()
+	{
+		Products.Add(new()
+			{
+				Id = 1,
+				Name = "Midnight Blaze",
+				Price = 200.99,
+				IsActive = false,
+				ProductProperties = new()
+				{
+				new DemoProductProp { Id = 1, Key = "Flavor", Value = "Rose"},
+					 new DemoProductProp { Id = 2, Key = "Size", Value = "20oz"},
+					new DemoProductProp { Id = 3, Key = "Color", Value="Purple" }
+				}
+			});
+
+		Products.Add(new()
+			{
+				Id = 2,
+				Name = "Blossom Lily",
+				Price = 100.55,
+				IsActive = true,
+				ProductProperties = new()
+			{
+				new DemoProductProp { Id = 1, Key = "Flavor", Value = "Lily" },
+				new DemoProductProp { Id = 2, Key = "Size", Value = "18oz" },
+				new DemoProductProp {Id = 3,Key = "Color",Value = "White"}
+			}
+			});
+	}
 }
