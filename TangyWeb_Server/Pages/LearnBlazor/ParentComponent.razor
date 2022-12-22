@@ -1,0 +1,38 @@
+﻿@page "/learnBlazor/parentComponent"
+
+<h3>Parent Child Relation</h3>
+
+<CascadingValue Value="@MessageForGrandChild" Name="message">
+	<CascadingValue Value="@LuckyNumber" Name="luckyNumber">
+<_ChildComponent OnButtonClick="ShowMessage" Title="This Title is passed as parameter from Parent Component"> 
+	<ChildContent> Render Fragment from Parent WooHOO!</ChildContent>
+	@*<DangerChildContent>This is Another Child Content</DangerChildContent>*@
+</_ChildComponent>
+</CascadingValue>
+</CascadingValue>
+<p><b>@message</b></p>
+
+<_AnotherChildComponent InputAttributes="InputAttributesFromParent">
+
+</_AnotherChildComponent>
+
+@*<_ChildComponent  Title="This is second Title">
+	
+</_ChildComponent>*@
+
+@code {
+	public string MessageForGrandChild = "This Message is from your Grand Parent (Parent Component)";
+	public string LuckyNumber = "8";
+	public Dictionary<string, object> InputAttributesFromParent { get; set; } = new Dictionary<string, object>()
+	{
+		{"required", "required"},
+		{"placeholder", "Enter name from Parent"},
+		{"maxlength", "3"}
+	};
+
+	private string message = "";
+	public void ShowMessage()
+	{
+		message = "This message comes frome Parent Component after clicked the Button on Child Component";
+	}
+}
