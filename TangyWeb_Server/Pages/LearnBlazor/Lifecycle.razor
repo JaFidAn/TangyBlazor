@@ -1,0 +1,74 @@
+﻿@page "/learnBlazor/lifecycle"
+
+<h3>Lifecycle</h3>
+
+<p role="status">Current count: @currentCount</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+<hr />
+
+<div class="border">
+    <_LifecycleChild CountValue="@currentCount"></_LifecycleChild>
+</div>
+
+@foreach(var item in EventType)
+{
+    @item;
+    <hr />
+}
+
+@code {
+    private int currentCount = 0;
+    List<string> EventType = new List<string>();
+
+    private void IncrementCount()
+    {
+        currentCount++;
+    }
+
+    protected override void OnInitialized()
+    {
+        EventType.Add("OnInitialized is called");
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        EventType.Add("OnInitializedAsync is called");
+
+    }
+
+    protected override void OnParametersSet()
+    {
+        EventType.Add("OnParametersSet is called");
+    }
+
+    protected override async Task  OnParametersSetAsync()
+    {
+        EventType.Add("OnParametersSetAsync is called");
+
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if(firstRender)
+        {
+            currentCount = 111;
+        }
+        else
+        {
+            currentCount = 999;
+        }
+        EventType.Add("OnAfterRender is called");
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        EventType.Add("OnAfterRenderAsync is called");
+    }
+
+    protected override bool ShouldRender()
+    {
+        EventType.Add("ShouldRender is called");
+        return true;
+    }   
+}
