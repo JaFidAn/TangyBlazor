@@ -11,6 +11,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tangy_Business", "Tangy_Bus
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tangy_DataAccess", "Tangy_DataAccess\Tangy_DataAccess.csproj", "{C2E5ACBD-2B7A-45E0-96CD-D36E5B42D16D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TangyWeb_Client", "TangyWeb_Client\TangyWeb_Client.csproj", "{6AA66DA5-D6F0-4502-84C7-F6AEE8AAEC84}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tangy_Common", "Tangy_Common\Tangy_Common.csproj", "{BF265408-857C-49D6-8E9A-6681BF93BD88}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{C2E5ACBD-2B7A-45E0-96CD-D36E5B42D16D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2E5ACBD-2B7A-45E0-96CD-D36E5B42D16D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C2E5ACBD-2B7A-45E0-96CD-D36E5B42D16D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6AA66DA5-D6F0-4502-84C7-F6AEE8AAEC84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AA66DA5-D6F0-4502-84C7-F6AEE8AAEC84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AA66DA5-D6F0-4502-84C7-F6AEE8AAEC84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AA66DA5-D6F0-4502-84C7-F6AEE8AAEC84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF265408-857C-49D6-8E9A-6681BF93BD88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF265408-857C-49D6-8E9A-6681BF93BD88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF265408-857C-49D6-8E9A-6681BF93BD88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF265408-857C-49D6-8E9A-6681BF93BD88}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
