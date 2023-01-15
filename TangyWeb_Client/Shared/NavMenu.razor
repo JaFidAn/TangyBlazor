@@ -1,4 +1,8 @@
-﻿<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+﻿@inject ISyncLocalStorageService _localStorage
+@inject ICartService _cartService
+@implements IDisposable
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
         <a class="navbar-brand p-0" href="/">Tangy</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -7,7 +11,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item p-0">
-                    <NavLink class="nav-link" href="/"><span>Home</span></NavLink>
+                    <NavLink class="nav-link" href="/cart"><span><i class="bi bi-cart"></i>(@GetCartCount())</span></NavLink>
                 </li>
               
             </ul>
@@ -24,3 +28,18 @@
         </div>
     </div>
 </nav>
+@code {
+    protected override void OnInitialized()
+    {
+        _cartService.OnChange += StateHasChanged;
+    }
+    public void Dispose()
+    {
+        _cartService.OnChange -= StateHasChanged;
+    }
+    private int GetCartCount()
+    {
+        var cart = _localStorage.GetItem<List<ShoppingCart>>(SD.ShoppingCart);
+        return cart == null ? 0 : cart.Count;
+    }
+}
