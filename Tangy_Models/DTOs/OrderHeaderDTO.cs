@@ -16,7 +16,9 @@ namespace Tangy_Models.DTOs
         [Required]
         [Display(Name = "Order Total")]
         public double OrderTotal { get; set; }
-        [Required]
+		[Required]
+		public DateTime OrderDate { get; set; }
+		[Required]
         [Display(Name = "Shipping Date")]
         public DateTime ShippingDate { get; set; }
         [Required]

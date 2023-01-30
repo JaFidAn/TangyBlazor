@@ -50,7 +50,6 @@ namespace Tangy_Business.Repository
             {
                 throw ex;
             }
-            return objDTO;
         }
 
         public async Task<int> Delete(int id)

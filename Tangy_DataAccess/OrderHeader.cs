@@ -17,7 +17,9 @@ namespace Tangy_DataAccess
         //add navigation propery : #TODO 
         [Required]
         public double OrderTotal { get; set; }
-        [Required]
+		[Required]
+		public DateTime OrderDate { get; set; }
+		[Required]
         public DateTime ShippingDate { get; set; }
         [Required]
         public string Status { get; set; }
