@@ -22,5 +22,8 @@ namespace Tangy_Common
         public const string Local_Token = "JWT Token";
 		public const string Local_OrderDetails = "Local_OrderDetails";
 		public const string Local_UserDetails = "UserDetails";
-    }
+
+		public const string SenderEmail = "r.alagezov@gmail.com";
+		public const string SenderPassword = "28051984aa";
+	}
 }
