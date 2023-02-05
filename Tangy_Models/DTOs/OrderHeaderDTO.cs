@@ -47,5 +47,7 @@ namespace Tangy_Models.DTOs
 		[Required]
 		[Display(Name = "Email")]
 		public string Email { get; set; }
-    }
+		public string? Tracking { get; set; }
+		public string? Carier { get; set; }
+	}
 }

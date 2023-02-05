@@ -63,7 +63,7 @@ namespace TangyWeb_API.Controllers
             var sessionDetails = service.Get(orderHeaderDTO.SessionId);
             if(sessionDetails.PaymentStatus== "paid")
             {
-                var result = await _orderRepository.MarkPaymentSuccessful(orderHeaderDTO.Id);
+                var result = await _orderRepository.MarkPaymentSuccessful(orderHeaderDTO.Id, sessionDetails.PaymentIntentId);
                 if(result == null)
                 {
                     return BadRequest(new ErrorModelDTO()
