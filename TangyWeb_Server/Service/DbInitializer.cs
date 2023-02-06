@@ -39,8 +39,8 @@ namespace TangyWeb_Server.Service
 
 				IdentityUser user = new IdentityUser()
 				{
-					UserName = "rasim.alagezov@gmail.com",
-					Email = "rasim.alagezov@gmail.com",
+					UserName = "r.alagezov@gmail.com",
+					Email = "r.alagezov@gmail.com",
 					EmailConfirmed = true
 				};
 				_userManager.CreateAsync(user, "Al@gezov1984").GetAwaiter().GetResult();
